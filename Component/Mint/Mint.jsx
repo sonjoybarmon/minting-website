@@ -9,10 +9,52 @@ import {
   Button,
 } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { initOnBoard } from "../../utils/onborad";
+import { shortenAddress } from "../../utils/shortenAddress";
 import styles from "./Mint.module.scss";
 
 const Mint = () => {
+  const [onboard, setOnboard] = useState(null);
+  const [walletAddress, setWellAddress] = useState("");
+
+  useEffect(() => {
+    // for wallet address using onboard
+    const onboardData = initOnBoard({
+      address: (address) => setWellAddress(address ? address : ""),
+      wallet: (wallet) => {
+        if (wallet.provider) {
+          window.localStorage.setItem("selectedWallet", wallet.name);
+        } else {
+          window.localStorage.removeItem("selectedWallet");
+        }
+      },
+    });
+
+    setOnboard(onboardData);
+  }, []);
+
+  // for got address from localStorage
+  const previouslySelectedWallet =
+    typeof window !== "undefined" &&
+    window.localStorage.getItem("selectedWallet");
+
+  // for realtime time get account
+  useEffect(() => {
+    if (previouslySelectedWallet !== null && onboard) {
+      onboard.walletSelect(previouslySelectedWallet);
+    }
+  }, [previouslySelectedWallet, onboard]);
+
+  // for connect wallet function
+  const connectWalletHandler = async () => {
+    const walletSelected = await onboard.walletSelect();
+
+    if (walletSelected) {
+      await onboard.walletCheck();
+      // window.location.reload(true);
+    }
+  };
   return (
     <div className={styles.mint_wrapper}>
       <Container maxWidth="xl">
@@ -35,7 +77,7 @@ const Mint = () => {
                     component="p"
                     className={styles.mint_subtitle}
                   >
-                    0x93454616565255534646541
+                    {walletAddress ? shortenAddress(walletAddress) : ""}
                   </Typography>
                 </Box>
                 {/* mint image section */}
@@ -112,13 +154,25 @@ const Mint = () => {
                         </Typography>
                       </Stack>
 
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        className={styles.connect_wallet_button}
-                      >
-                        Connect Wallet
-                      </Button>
+                      {walletAddress ? (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={styles.connect_wallet_button}
+                          onClick={connectWalletHandler}
+                        >
+                          Mint
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={styles.connect_wallet_button}
+                          onClick={connectWalletHandler}
+                        >
+                          Connect Wallet
+                        </Button>
+                      )}
                     </Grid>
                   </Grid>
                 </Box>
