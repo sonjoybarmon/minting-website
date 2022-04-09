@@ -1,0 +1,138 @@
+.mint_wrapper {
+  padding: 50px 0;
+  background-color: #537895;
+  background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+
+  .mintCard_wrapper {
+    background: #000 !important;
+    color: #fff;
+
+    .mint_header_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .mint_title {
+        font-size: 36px;
+        font-family: "Coiny", cursive;
+        font-weight: bold;
+        // color: #fff;
+        color: #2884b8;
+        text-transform: uppercase;
+      }
+      .mint_subtitle {
+        font-size: 16px;
+        font-family: "Coiny", cursive;
+        color: #fff;
+        word-break: break-all;
+      }
+    }
+
+    .mint_image_section {
+      margin-top: 50px;
+      .mint_image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+
+        .mint_image_title {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          text-align: center;
+          font-size: 16px;
+          font-family: "Coiny", cursive;
+          color: #fff;
+          text-transform: uppercase;
+          padding: 10px;
+          background: #000;
+          border-radius: 10px;
+
+          span {
+            color: #537895;
+          }
+        }
+      }
+
+      .mint_button_wrapper {
+        button {
+          width: 100px;
+          font-size: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          color: #fff;
+          padding: 0;
+        }
+        h5 {
+          font-size: 30px;
+          font-family: "Coiny", cursive;
+          color: #537895;
+        }
+      }
+
+      .mint_total_wrapper {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 15px;
+        padding-bottom: 20px;
+
+        h5 {
+          font-size: 30px;
+          font-family: "Coiny", cursive;
+          color: #537895;
+        }
+      }
+
+      .connect_wallet_button {
+        width: 100%;
+        font-size: 30px;
+        text-align: center;
+        font-family: "Coiny", cursive;
+        background-color: #f89b9e;
+        background-image: linear-gradient(315deg, #f89b9e 0%, #c9d9ff 74%);
+        margin-top: 30px;
+        color: #000;
+        border-radius: 15px;
+      }
+    }
+
+    .something_wrapper {
+      border: 1px solid #fff;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .contract_address_wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 40px;
+      h6 {
+        font-size: 36px;
+        font-weight: bold;
+        font-family: "Coiny", cursive;
+        color: #98d9e1;
+      }
+      p {
+        color: #fff;
+        font-size: 18px;
+        line-height: 30px;
+        margin-top: 10px;
+        font-family: "Coiny", cursive;
+        word-break: break-all;
+      }
+    }
+  }
+}
