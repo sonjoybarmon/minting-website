@@ -7,6 +7,7 @@ const RPC_URL =
 const config = {
   title: "Sree-NFTs Dapp",
   description: "Sree-nft buy sell application",
+  contractAddress: "0xcE871cA9EA724E7A897D9c006d7bcD87C02d5c48",
 };
 
 const onBoardOptions = {

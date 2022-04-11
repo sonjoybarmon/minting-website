@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { config } from "../../dapp.config";
 import { initOnBoard } from "../../utils/onborad";
 import { shortenAddress } from "../../utils/shortenAddress";
 import styles from "./Mint.module.scss";
@@ -189,9 +190,19 @@ const Mint = () => {
                   <Typography variant="h6" color="inherit" component="h6">
                     Contract Address
                   </Typography>
-                  <Typography variant="subtitle1" color="inherit" component="p">
-                    245145154654612463214665654646465
-                  </Typography>
+                  <a
+                    href={`https://rinkeby.etherscan.io/address/${config.contractAddress}#readContract`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Typography
+                      variant="subtitle1"
+                      color="inherit"
+                      component="p"
+                    >
+                      {config.contractAddress}
+                    </Typography>
+                  </a>
                 </Box>
               </CardContent>
             </Card>
